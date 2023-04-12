@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CPro_1
+﻿namespace CPro_1
 {
     public static class Helppppppp
     {
@@ -12,6 +6,7 @@ namespace CPro_1
         {
             return new string('*', numStars);
         }
+
         public static void ShowInformation(Transport transport)
         {
             transport.ShowInfo();
