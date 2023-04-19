@@ -1,11 +1,21 @@
-﻿namespace CPro_1
+﻿using CPro_1.Interface;
+using CPro_1.Transports.Door;
+using CPro_1.Transports.Movement;
+using CPro_1.Transports.TypeEngine;
+
+namespace CPro_1.Transports
 {
-    public class AirTransport : Transport, IPassegers, ICrew
+    public class AirTransport : BaseTransport, IPassegers, ICrew
     {
         private int crew = 2;
         private int passegers = default;
         private double speed = default;
 
+        public AirTransport(BaseEngine baseEngine, DoorPosition doorPosition, string moved) 
+            : base(baseEngine, doorPosition, moved)
+        {
+
+        }
         public int Crew { set { crew = value; } }
         public int Passegers { set { passegers = value; } }
         public double Speed { set { speed = value; } }

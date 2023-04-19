@@ -1,4 +1,4 @@
-﻿namespace CPro_1
+﻿namespace CPro_1.Interface
 {
     public interface IPeapleInTransport
     {
