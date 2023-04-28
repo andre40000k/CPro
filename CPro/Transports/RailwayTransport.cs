@@ -33,8 +33,8 @@ namespace CPro_1.Transports
         public override void ShowInfo()
         {
             base.ShowInfo();
-            Console.WriteLine("Number people in transport: {0}\n" +
-                "Weight transport: {1}", NumPeople(), WeightTransport());
+            Console.WriteLine("Number people in transport: {0}\n" + 
+                "Weight transport: {1}\n", NumPeople(), WeightTransport());
         }
     }
 }

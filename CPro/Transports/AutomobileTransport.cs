@@ -15,6 +15,7 @@ namespace CPro_1.Transports
         public int Crew { set { crew = value; } }
         public int Passegers { set { passegers = value; } }
         public double WeightAutoTransport { set { weightAutoTransport = value; } }
+        
 
         public override int NumPeople()
         {
@@ -30,7 +31,7 @@ namespace CPro_1.Transports
         {
             base.ShowInfo();
             Console.WriteLine("Number people in transport: {0}\n" +
-                "Weight transport: {1}", NumPeople(), WeightTransport());
+                "Weight transport: {1}\n", NumPeople(), WeightTransport());
         }
     }
 }

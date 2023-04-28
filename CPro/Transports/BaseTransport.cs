@@ -6,11 +6,13 @@ using CPro_1.Transports.Movement;
 
 namespace CPro_1.Transports
 {
-    public abstract class BaseTransport : IPeapleInTransport
+    public abstract class BaseTransport : IPeapleInTransport, IGetInformation, IGetSpeed, IEngeen
     {
         private string? nameOfTransport = default;
 
         private int comfortStars = default;
+
+        private double speed = default;
 
         public BaseTransport(BaseEngine baseEngine, DoorPosition doorPosition, string moves)
         {
@@ -20,8 +22,9 @@ namespace CPro_1.Transports
         }
 
         public string NameOfTransport { set { nameOfTransport = value; } }
+        public double Speed { get { return speed; } set { speed = value; } }
 
-        public BaseEngine BaseEngine { get; private set; }
+        public BaseEngine BaseEngine { get; init; }
 
         public DoorPosition DoorPosition { get; private set; }
 
@@ -43,9 +46,10 @@ namespace CPro_1.Transports
                 "Ease of movement: {1}\n" +
                 "Type of Engine: {2}\n" +
                 "Position of doors: {3}\n" +
-                "State of transport: {4}",
+                "State of transport: {4}\n" +
+                "Speed: {5}",
                 nameOfTransport, Helppppppp.ComfortStars(comfortStars), BaseEngine.TypeEngine, 
-                DoorPosition.OpenClose, MoveTransport.Move);
+                DoorPosition.OpenClose, MoveTransport.Move, speed);
         }
 
     }

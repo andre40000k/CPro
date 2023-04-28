@@ -9,7 +9,6 @@ namespace CPro_1.Transports
     {
         private int crew = 2;
         private int passegers = default;
-        private double speed = default;
 
         public AirTransport(BaseEngine baseEngine, DoorPosition doorPosition, string moved) 
             : base(baseEngine, doorPosition, moved)
@@ -18,8 +17,6 @@ namespace CPro_1.Transports
         }
         public int Crew { set { crew = value; } }
         public int Passegers { set { passegers = value; } }
-        public double Speed { set { speed = value; } }
-
         public override int NumPeople()
         {
             return crew + passegers;
@@ -34,8 +31,7 @@ namespace CPro_1.Transports
         {
             base.ShowInfo();
             Console.WriteLine("Number people in transport: {0}\n" +
-                "Weight transport: {1}\n" +
-                "Speed plane: {2}", NumPeople(), WeightTransport(), speed);
+                "Weight transport: {1}\n", NumPeople(), WeightTransport());
         }
     }
 }
