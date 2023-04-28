@@ -2,6 +2,7 @@
 {
     public interface IPlace
     {
+        //update ne inteface
         void InterestingPlaces();
     }
 }

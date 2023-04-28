@@ -15,12 +15,14 @@ namespace CPro_1.Helper
         
         public static void Statistics<T>(this T stat, double speed) where T : class, IDistance, IPlace
         {
+            //update
             stat.InterestingPlaces();
             stat.FinalDistance(speed);
         }
 
         private static void CreateObjectTipes(double speed)
         {
+            //update
             var transportInformation = new TrasportInformation<Statistics>();
             var transStatistic = transportInformation.WriteInformation();
             transStatistic.Statistics(speed);
@@ -28,6 +30,7 @@ namespace CPro_1.Helper
 
         public static void ShowInformation<T>(T transport) where T : IGetInformation, IGetSpeed, IEngeen
         {
+            //update
             Console.ForegroundColor = (ConsoleColor)transport.BaseEngine.ColaredEngine();
             transport.ShowInfo();
             CreateObjectTipes(transport.Speed);
@@ -42,7 +45,7 @@ namespace CPro_1.Helper
 
         public static void RunScript()
         {
-
+            //update
             List<AutomobileTransport> autoTransports = new List<AutomobileTransport>()
             {
                 new AutomobileTransport(new BaseEngine(TypeEngineEnum.GIBRID), new DoorPosition(OpenCloseEnum.Close), "Going")

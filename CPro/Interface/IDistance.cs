@@ -2,6 +2,7 @@
 {
     public interface IDistance
     {
+        //update ne inteface
         void FinalDistance(double speed);
     }
 }

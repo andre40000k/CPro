@@ -2,6 +2,7 @@
 {
     public interface IGetSpeed
     {
+        //update ne inteface
         double Speed { get; set; }
     }
 }
