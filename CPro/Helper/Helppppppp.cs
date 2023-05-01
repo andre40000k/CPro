@@ -3,11 +3,37 @@ using CPro_1.Transports.TypeEngine;
 using CPro_1.Enums;
 using CPro_1.Transports.Door;
 using CPro_1.Interface;
+using CPro_1.Taska1_4;
+using CPro_1.Task7_10;
 
 namespace CPro_1.Helper
 {
     public static class Helppppppp
     {
+        public static void Task1_4()
+        {
+            Tasks1_4 tsk = new Tasks1_4();
+            tsk.MassNumber = Task1_4GetNumbers();
+            tsk.NonPartValue();
+            tsk.SqareNonPartValue();
+            tsk.SumNumbers();
+        }
+        public static int[] Task1_4GetNumbers()
+        {
+            int lenghtMass = 100;
+            int[] mass = new int[lenghtMass];
+
+            for (int i = 0; i < lenghtMass; i++)
+            {
+                mass[i] = RandomValue(0, 100);
+            }
+            return mass;
+        }
+        public static int RandomValue(int start, int end)
+        {
+            Random rnd = new Random();
+            return rnd.Next(start, end);
+        }
         public static string ComfortStars(int numStars)
         {
             return new string('*', numStars);
@@ -45,22 +71,202 @@ namespace CPro_1.Helper
 
         public static void RunScript()
         {
-            //update
             List<AutomobileTransport> autoTransports = new List<AutomobileTransport>()
             {
-                new AutomobileTransport(new BaseEngine(TypeEngineEnum.GIBRID), new DoorPosition(OpenCloseEnum.Close), "Going")
+                new AutomobileTransport(new BaseEngine(TypeEngineEnum.GIBRID),
+                new DoorPosition(OpenCloseEnum.Close), "Going")
                 {
                     NameOfTransport = "Car",
-                    WeightAutoTransport = 20,
-                    Speed = 110
-                }
+                    WeightAutoTransport = RandomValue(1000, 2000),
+                    Speed = RandomValue(0, 200),
+                    Passegers = RandomValue(0, 4)
+                },
+
+                new AutomobileTransport(new BaseEngine(TypeEngineEnum.DVS), 
+                new DoorPosition(OpenCloseEnum.Close), "Going")
+                {
+                    NameOfTransport = "Car",
+                    WeightAutoTransport = RandomValue(1000, 2000),
+                    Speed = RandomValue(0, 200),
+                    Passegers = RandomValue(0, 4)
+                },
+
+                new AutomobileTransport(new BaseEngine(TypeEngineEnum.GIBRID), 
+                new DoorPosition(OpenCloseEnum.Close), "Going")
+                {
+                    NameOfTransport = "Car",
+                    WeightAutoTransport = RandomValue(1000, 2000),
+                    Speed = RandomValue(0, 200),
+                    Passegers = RandomValue(0, 4)
+                },
+
+                new AutomobileTransport(new BaseEngine(TypeEngineEnum.GIBRID), 
+                new DoorPosition(OpenCloseEnum.Close), "Going")
+                {
+                    NameOfTransport = "Car",
+                    WeightAutoTransport = RandomValue(1000, 2000), 
+                    Speed = RandomValue(0, 200),
+                    Passegers = RandomValue(0, 4)
+                },
+
+                new AutomobileTransport(new BaseEngine(TypeEngineEnum.ELECTRIC), 
+                new DoorPosition(OpenCloseEnum.Close), "Going")
+                {
+                    NameOfTransport = "Car",
+                    WeightAutoTransport = RandomValue(1000, 2000), 
+                    Speed = RandomValue(0, 200),
+                    Passegers = RandomValue(0, 4)
+                },
+
+                new AutomobileTransport(new BaseEngine(TypeEngineEnum.ELECTRIC),
+                new DoorPosition(OpenCloseEnum.Close), "Going")
+                {
+                    NameOfTransport = "Car",
+                    WeightAutoTransport = RandomValue(1000, 2000),
+                    Speed = RandomValue(0, 200),
+                    Passegers = RandomValue(0, 4)
+                },
+
+                new AutomobileTransport(new BaseEngine(TypeEngineEnum.DVS),
+                new DoorPosition(OpenCloseEnum.Close), "Going")
+                {
+                    NameOfTransport = "Car",
+                    WeightAutoTransport = RandomValue(1000, 2000),
+                    Speed = RandomValue(0, 200),
+                    Passegers = RandomValue(0, 4)
+                },
+
+                new AutomobileTransport(new BaseEngine(TypeEngineEnum.GIBRID),
+                new DoorPosition(OpenCloseEnum.Close), "Going")
+                {
+                    NameOfTransport = "Car",
+                    WeightAutoTransport = RandomValue(1000, 2000),
+                    Speed = RandomValue(0, 200),
+                    Passegers = RandomValue(0, 4)
+                },
+
+                new AutomobileTransport(new BaseEngine(TypeEngineEnum.DVS),
+                new DoorPosition(OpenCloseEnum.Close), "Going")
+                {
+                    NameOfTransport = "Car",
+                    WeightAutoTransport = RandomValue(1000, 2000),
+                    Speed = RandomValue(0, 200),
+                    Passegers = RandomValue(0, 4)
+                },
+
+                new AutomobileTransport(new BaseEngine(TypeEngineEnum.DVS),
+                new DoorPosition(OpenCloseEnum.Close), "Going")
+                {
+                    NameOfTransport = "Car",
+                    WeightAutoTransport = RandomValue(1000, 2000),
+                    Speed = RandomValue(0, 200),
+                    Passegers = RandomValue(0, 4)
+                },
+
+                new AutomobileTransport(new BaseEngine(TypeEngineEnum.DVS),
+                new DoorPosition(OpenCloseEnum.Close), "Going")
+                {
+                    NameOfTransport = "Car",
+                    WeightAutoTransport = RandomValue(1000, 2000),
+                    Speed = RandomValue(0, 200),
+                    Passegers = RandomValue(0, 4)
+                },
+
+                new AutomobileTransport(new BaseEngine(TypeEngineEnum.DVS),
+                new DoorPosition(OpenCloseEnum.Close), "Going") 
+                {
+                    NameOfTransport = "Car",
+                    WeightAutoTransport = RandomValue(1000, 2000),
+                    Speed = RandomValue(0, 200),
+                    Passegers = RandomValue(0, 4)
+                },
+
+                new AutomobileTransport(new BaseEngine(TypeEngineEnum.ELECTRIC),
+                new DoorPosition(OpenCloseEnum.Close), "Going")
+                {
+                    NameOfTransport = "Car",
+                    WeightAutoTransport = RandomValue(1000, 2000),
+                    Speed = RandomValue(0, 200),
+                    Passegers = RandomValue(0, 4)
+                },
+
+                new AutomobileTransport(new BaseEngine(TypeEngineEnum.ELECTRIC),
+                new DoorPosition(OpenCloseEnum.Close), "Going")
+                {
+                    NameOfTransport = "Car",
+                    WeightAutoTransport = RandomValue(1000, 2000),
+                    Speed = RandomValue(0, 200),
+                    Passegers = RandomValue(0, 4)
+                },
+
+                new AutomobileTransport(new BaseEngine(TypeEngineEnum.ELECTRIC),
+                new DoorPosition(OpenCloseEnum.Close), "Going")
+                {
+                    NameOfTransport = "Car",
+                    WeightAutoTransport = RandomValue(1000, 2000),
+                    Speed = RandomValue(0, 200),
+                    Passegers = RandomValue(0, 4)
+                },
+
+                new AutomobileTransport(new BaseEngine(TypeEngineEnum.ELECTRIC),
+                new DoorPosition(OpenCloseEnum.Close), "Going")
+                {
+                    NameOfTransport = "Car",
+                    WeightAutoTransport = RandomValue(1000, 2000),
+                    Speed = RandomValue(0, 200),
+                    Passegers = RandomValue(0, 4)
+                },
+
+                new AutomobileTransport(new BaseEngine(TypeEngineEnum.GIBRID),
+                new DoorPosition(OpenCloseEnum.Close), "Going")
+                {
+                    NameOfTransport = "Car",
+                    WeightAutoTransport = RandomValue(1000, 2000),
+                    Speed = RandomValue(0, 200),
+                    Passegers = RandomValue(0, 4)
+                },
+
+                new AutomobileTransport(new BaseEngine(TypeEngineEnum.GIBRID),
+                new DoorPosition(OpenCloseEnum.Close), "Going")
+                {
+                    NameOfTransport = "Car",
+                    WeightAutoTransport = RandomValue(1000, 2000),
+                    Speed = RandomValue(0, 200),
+                    Passegers = RandomValue(0, 4)
+                },
+
+                new AutomobileTransport(new BaseEngine(TypeEngineEnum.ELECTRIC),
+                new DoorPosition(OpenCloseEnum.Close), "Going")
+                {
+                    NameOfTransport = "Car",
+                    WeightAutoTransport = RandomValue(1000, 2000),
+                    Speed = RandomValue(0, 200),
+                    Passegers = RandomValue(0, 4)
+                },
+
+                new AutomobileTransport(new BaseEngine(TypeEngineEnum.DVS),
+                new DoorPosition(OpenCloseEnum.Close), "Going")
+                {
+                    NameOfTransport = "Car",
+                    WeightAutoTransport = RandomValue(1000, 2000),
+                    Speed = RandomValue(0, 200),
+                    Passegers = RandomValue(0, 4)
+                },
             };
 
+            //foreach (AutomobileTransport transport in autoTransports)
+            //{
+            //    ShowInformation(transport);
+            //}
 
-            foreach (AutomobileTransport transport in autoTransports)
-            {
-                ShowInformation(transport);
-            }
+            LINQ_Task7_10 tsk7_10 = new LINQ_Task7_10();
+            tsk7_10.Task7(autoTransports);
+            Delimetr();
+            tsk7_10.Task8(autoTransports);
+            Delimetr();
+            tsk7_10.Task9(autoTransports);
+            Delimetr();
+            tsk7_10.Task10(autoTransports);
 
             List<RailwayTransport> trainTransports = new List<RailwayTransport>()
             {
@@ -85,11 +291,10 @@ namespace CPro_1.Helper
                 }
             };
 
-            foreach (RailwayTransport transport in trainTransports)
-            {
-                ShowInformation(transport);
-            }
-
+            //foreach (RailwayTransport transport in trainTransports)
+            //{
+            //    ShowInformation(transport);
+            //}
 
             List<AirTransport> airTransports = new List<AirTransport>()
             {
@@ -102,12 +307,13 @@ namespace CPro_1.Helper
                 }
             };
 
+            //foreach (AirTransport transport in airTransports)
+            //{
+            //    ShowInformation(transport);
+            //}
 
-            foreach (AirTransport transport in airTransports)
-            {
-                ShowInformation(transport);
-            }
-            
-        }
+
+            //Task1_4();
+        }        
     }
 }

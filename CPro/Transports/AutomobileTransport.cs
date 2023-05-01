@@ -13,8 +13,8 @@ namespace CPro_1.Transports
         public AutomobileTransport(BaseEngine baseEngine, DoorPosition doorPosition, string moved) 
             : base(baseEngine, doorPosition, moved) { }
         public int Crew { set { crew = value; } }
-        public int Passegers { set { passegers = value; } }
-        public double WeightAutoTransport { set { weightAutoTransport = value; } }
+        public int Passegers { get => passegers; set { passegers = value; } }
+        public double WeightAutoTransport { get => weightAutoTransport;  set { weightAutoTransport = value; } }
         
 
         public override int NumPeople()
