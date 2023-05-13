@@ -32,6 +32,7 @@ namespace CPro_1.Helper
             Random rnd = new Random();
             return rnd.Next(start, end);
         }
+        
         public static string ComfortStars(int numStars)
         {
             return new string('*', numStars);
@@ -50,7 +51,7 @@ namespace CPro_1.Helper
             transStatistic.Statistics(speed);
         }
 
-        public static void ShowInformation<T>(T transport) where T : IGetInformation, IGetSpeed, IEngeen
+        public static void ShowInformation<T>(this T transport) where T : IGetInformation, IGetSpeed, IEngeen
         {
             Console.ForegroundColor = (ConsoleColor)transport.BaseEngine.ColaredEngine();
             transport.ShowInfo();
@@ -63,6 +64,7 @@ namespace CPro_1.Helper
         {
             Console.WriteLine(new string('-', 35));
         }
+
         public static void LinqTask7_10<T>(List<T> transport) 
         {
             LINQ_Task7_10 tsk7_10 = new LINQ_Task7_10();
@@ -75,43 +77,33 @@ namespace CPro_1.Helper
             //tsk7_10.Task10(transport);
         }
 
-        public static async Task GetList<T>(string path) where T : IGetInformation, IGetSpeed, IEngeen
+        public static async Task StartLists() 
         {
-            var transports = await Read<T>.GetDate(path);          
+            CancellationTokenSource cts = new CancellationTokenSource();
+            CancellationToken token = cts.Token;
 
-            foreach (var transport in transports)
+            string[] path =
             {
-                ShowInformation(transport);
-            }
+                "DataBaseAutoTransport.txt",
+                "DataBaseAirTransport.txt",
+                "DataBaseReilwayTransport.txt"
+            };
 
-            LinqTask7_10(transports);
+            List<Task> tasks = new List<Task>
+            {
+                    Task.Run(() => Read<RailwayTransport>.ReadFiles(path[2], token), token),
+                    Task.Run(() => Read<AutomobileTransport>.ReadFiles(path[0], token), token),
+                    Task.Run(() => Read<AirTransport>.ReadFiles(path[1], token),token)
+            };
+
+            await Task.WhenAny(tasks);
+            cts.Cancel();
+            await Task.WhenAll(tasks);
         }
 
         public static void RunScript()
         {
-            string path = "DataBaseAutoTransport.txt";
-            GetList<AutomobileTransport>(path).Wait();
-
-            Delimetr();
-            Delimetr();
-            Delimetr();
-            Delimetr();
-
-            path = "DataBaseAirTransport.txt";
-            GetList<AirTransport>(path).Wait();
-
-            Delimetr();
-            Delimetr();
-            Delimetr();
-            Delimetr();
-
-            path = "DataBaseReilwayTransport.txt";
-            GetList<RailwayTransport>(path).Wait();
-
-
-            Task.WaitAll(Task.Delay(1000));
-
-            //Task1_4();
+            StartLists().Wait();
         }
     }
 }

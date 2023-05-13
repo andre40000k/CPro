@@ -1,5 +1,4 @@
 ﻿using CPro_1.Helper;
-using CPro_1.ReadFile;
 
 namespace CPro
 {
@@ -9,8 +8,6 @@ namespace CPro
         {
 
             Helppppppp.RunScript();
-
-
             //Read a = new Read();
             //a.ReadFiles();
         }
