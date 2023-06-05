@@ -11,7 +11,7 @@ namespace CPro_1.Transports
         private int passegers = default;
         private int numberOfWagons = default;
 
-        public RailwayTransport(BaseEngine baseEngine, DoorPosition doorPosition, string moved) 
+        public RailwayTransport(string baseEngine, DoorPosition doorPosition, string moved) 
             : base(baseEngine, doorPosition, moved)
         {
 

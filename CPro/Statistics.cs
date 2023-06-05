@@ -2,7 +2,6 @@
 
 namespace CPro_1
 {
-    //update new class
     public class Statistics : IPlace, IDistance
     {
         private double pathLenght = default;

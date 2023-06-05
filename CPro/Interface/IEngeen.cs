@@ -4,6 +4,6 @@ namespace CPro_1.Interface
 {
     public interface IEngeen
     {
-        public BaseEngine BaseEngine { get; init; }
+        public BaseEngine BaseEngine { get; set; }
     }
 }

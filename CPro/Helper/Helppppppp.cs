@@ -3,6 +3,7 @@ using CPro_1.Interface;
 using CPro_1.Taska1_4;
 using CPro_1.Task7_10;
 using CPro_1.ReadFile;
+using CPro_1.ReflectionTask;
 
 namespace CPro_1.Helper
 {
@@ -77,7 +78,7 @@ namespace CPro_1.Helper
             //tsk7_10.Task10(transport);
         }
 
-        public static async Task StartLists() 
+        public static async Task<List<AutomobileTransport>> StartLists()
         {
             CancellationTokenSource cts = new CancellationTokenSource();
             CancellationToken token = cts.Token;
@@ -89,21 +90,43 @@ namespace CPro_1.Helper
                 "DataBaseReilwayTransport.txt"
             };
 
-            List<Task> tasks = new List<Task>
-            {
-                    Task.Run(() => Read<RailwayTransport>.ReadFiles(path[2], token), token),
-                    Task.Run(() => Read<AutomobileTransport>.ReadFiles(path[0], token), token),
-                    Task.Run(() => Read<AirTransport>.ReadFiles(path[1], token),token)
-            };
+            Task<List<AutomobileTransport>> task = Task.Run(() => Read<AutomobileTransport>.ReadFiles("DataBaseAutoTransport.txt"));
+            List<AutomobileTransport> tr = await task;
 
-            await Task.WhenAny(tasks);
-            cts.Cancel();
-            await Task.WhenAll(tasks);
+            List<AutomobileTransport> automobileTransports = new List<AutomobileTransport>();
+            automobileTransports.AddRange(tr);
+
+            //GetValue.GetValueTransport(automobileTransports[0]);
+
+            //PrintValue.PrintPropValueTransport(automobileTransports[0]);
+                        
+            //List<Task> tasks = new List<Task>
+            //{
+            //        Task.Run(() => Read<RailwayTransport>.ReadFiles(path[2], token), token),
+            //        Task.Run(() => Read<AutomobileTransport>.ReadFiles(path[0], token), token),
+            //        Task.Run(() => Read<AirTransport>.ReadFiles(path[1], token),token)
+            //};
+            //await Task.WhenAny(tasks);
+            //cts.Cancel();
+            //await Task.WhenAll(task);
+            return automobileTransports;
         }
 
-        public static void RunScript()
+        public static async void RunScript()
         {
-            StartLists().Wait();
+            var allTransports =  StartLists().GetAwaiter().GetResult();
+
+            allTransports.Add((AutomobileTransport)SetValuePropertyInObject.SetPropValueTransport(typeof(AutomobileTransport)));
+
+            foreach (var transport in allTransports)
+            {
+                ShowInformation(transport);
+            }
+
+            //PrintValue.PrintPropValueTransport(a[0]);
+
+
+
         }
     }
 }

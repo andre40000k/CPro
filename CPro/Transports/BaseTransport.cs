@@ -3,6 +3,7 @@ using CPro_1.Interface;
 using CPro_1.Transports.Door;
 using CPro_1.Transports.TypeEngine;
 using CPro_1.Transports.Movement;
+using CPro_1.Enums;
 
 namespace CPro_1.Transports
 {
@@ -14,21 +15,23 @@ namespace CPro_1.Transports
 
         private double speed = default;
 
-        public BaseTransport(BaseEngine baseEngine, DoorPosition doorPosition, string moves)
+        public BaseTransport() { }
+
+        public BaseTransport(string baseEngine, DoorPosition doorPosition, string moves)
         {
-            BaseEngine = baseEngine;
+            BaseEngine = new BaseEngine((TypeEngineEnum)Enum.Parse(typeof(TypeEngineEnum), baseEngine));
             DoorPosition = doorPosition;
             MoveTransport = new MoveTransport(moves);
         }
 
-        public string NameOfTransport { set { nameOfTransport = value; } }
+        public string? NameOfTransport { get => nameOfTransport; set { nameOfTransport = value; } }
         public double Speed { get { return speed; } set { speed = value; } }
 
-        public BaseEngine BaseEngine { get; init; }
+        public BaseEngine BaseEngine { get; set; }
 
-        public DoorPosition DoorPosition { get; private set; }
+        public DoorPosition DoorPosition { get; set; }
 
-        public MoveTransport MoveTransport { get; private set; }
+        public MoveTransport MoveTransport { get; set; }
 
         Random random = new Random();
 

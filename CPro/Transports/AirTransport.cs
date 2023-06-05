@@ -10,7 +10,7 @@ namespace CPro_1.Transports
         private int crew = 2;
         private int passegers = default;
 
-        public AirTransport(BaseEngine baseEngine, DoorPosition doorPosition, string moved) 
+        public AirTransport(string baseEngine, DoorPosition doorPosition, string moved) 
             : base(baseEngine, doorPosition, moved)
         {
 

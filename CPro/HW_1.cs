@@ -6,10 +6,7 @@ namespace CPro
     {
         static void Main(string[] args)
         {
-
             Helppppppp.RunScript();
-            //Read a = new Read();
-            //a.ReadFiles();
         }
     }
 }
