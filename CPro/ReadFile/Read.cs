@@ -1,10 +1,7 @@
-﻿using CPro_1.Enums;
-using CPro_1.Helper;
+﻿using CPro_1.Helper;
 using CPro_1.Interface;
 using CPro_1.ReflectionTask;
 using CPro_1.Transports;
-using CPro_1.Transports.Door;
-using CPro_1.Transports.TypeEngine;
 
 namespace CPro_1.ReadFile
 {
@@ -13,13 +10,6 @@ namespace CPro_1.ReadFile
         public static async Task<List<T>> ReadFiles(string path/*, CancellationToken token*/)
         {            
             var transports = new List<T>();
-
-            //int type = GetTypeTransport();
-
-            //if(type == 0)
-            //{
-            //    throw new Exception();
-            //}
 
             using (var streamReader = new StreamReader(path))
             {
@@ -35,14 +25,12 @@ namespace CPro_1.ReadFile
                     //}
 
                     var parameters = line.Split(',');
-                    //transports.Add((T)GetObjects(parameters, type));
                     transports.Add((T)SetValuePropertyInObject.SetPropValueTransport<T>(parameters));
                     
                     await Task.Delay(100);
                 }
             }
 
-            //PushIf(transports);
             return transports;
         }
 
@@ -64,48 +52,7 @@ namespace CPro_1.ReadFile
                 return 3;
 
             return 0;
-        }   
-
-        private static object GetObjects(string[] inform, int type)
-        {
-            switch (type)
-            {
-                //case 1:
-                //    var transport1 = new AutomobileTransport(new BaseEngine((TypeEngineEnum)Enum.Parse(typeof(TypeEngineEnum), inform[0].ToUpper())),
-                //        new DoorPosition((OpenCloseEnum)Enum.Parse(typeof(OpenCloseEnum), inform[1])), inform[2])
-                //            {
-                //                NameOfTransport = inform[3],
-                //                WeightAutoTransport = int.Parse(inform[4]),
-                //                Speed = int.Parse(inform[5]),
-                //                Passegers = int.Parse(inform[6])
-                //            };
-                //    return transport1;
-                //case 2:
-                //    var transport2 = new AirTransport(new BaseEngine((TypeEngineEnum)Enum.Parse(typeof(TypeEngineEnum), inform[0].ToUpper())),
-                //       new DoorPosition((OpenCloseEnum)Enum.Parse(typeof(OpenCloseEnum), inform[1])), inform[2])
-                //            {
-                //                NameOfTransport = inform[3],
-                //                Passegers = int.Parse(inform[4]),
-                //                Speed = int.Parse(inform[5])
-                //            };
-                //    return transport2;
-                //case 3:
-                //    var transport3 = new RailwayTransport(new BaseEngine((TypeEngineEnum)Enum.Parse(typeof(TypeEngineEnum), inform[0].ToUpper())),
-                //       new DoorPosition((OpenCloseEnum)Enum.Parse(typeof(OpenCloseEnum), inform[1])), inform[2])
-                //            {
-                //                Crew = int.Parse(inform[3]),
-                //                NameOfTransport = inform[4],
-                //                Passegers = int.Parse(inform[5]),
-                //                NumberOfWagons= int.Parse(inform[6]),
-                //                Speed = int.Parse(inform[7])
-
-                //            };
-                //    return transport3;
-            }
-
-
-
-            return null;           
-        }
+        }  
+        
     }
 }

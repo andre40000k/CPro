@@ -8,7 +8,7 @@ namespace CPro_1.ReflectionTask
         {
 
             Console.Write("Write name property: ");
-            string prop = WorkWithString.RegistersString(Console.ReadLine());
+            string prop = WorkWithString.RegistersFirstUpString(Console.ReadLine());
 
             if (string.IsNullOrEmpty(prop))
             {

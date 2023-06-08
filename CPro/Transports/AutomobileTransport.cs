@@ -1,6 +1,6 @@
-﻿using CPro_1.Interface;
+﻿using CPro_1.CustomAttribute;
+using CPro_1.Interface;
 using CPro_1.Transports.Door;
-using CPro_1.Transports.TypeEngine;
 
 namespace CPro_1.Transports
 {
@@ -15,7 +15,10 @@ namespace CPro_1.Transports
             : base(baseEngine, doorPosition, moved) { }
 
         public int Crew { get => crew; set { crew = value; } }
+        [Display]
+        [SetValue]
         public int Passegers { get => passegers; set { passegers = value; } }
+        [SetValue]
         public double WeightAutoTransport { get => weightAutoTransport;  set { weightAutoTransport = value; } }
         
 

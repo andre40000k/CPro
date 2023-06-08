@@ -116,7 +116,11 @@ namespace CPro_1.Helper
         {
             var allTransports =  StartLists().GetAwaiter().GetResult();
 
-            allTransports.Add((AutomobileTransport)SetValuePropertyInObject.SetPropValueTransport(typeof(AutomobileTransport)));
+            //PrintValue.PrintPropValueTransport(allTransports[0]);
+
+            //allTransports.Add((AutomobileTransport)SetValuePropertyInObject.SetPropValueTransport(typeof(AutomobileTransport)));
+            allTransports.Add((AutomobileTransport)SetValuePropertyInObject.SetPropValueTransportWithAttribute(typeof(AutomobileTransport)));
+
 
             foreach (var transport in allTransports)
             {

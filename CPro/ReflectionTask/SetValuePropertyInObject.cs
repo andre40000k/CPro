@@ -1,4 +1,6 @@
-﻿using CPro_1.Enums;
+﻿using CPro_1.CustomAttribute;
+using CPro_1.Enums;
+using CPro_1.Helper;
 
 namespace CPro_1.ReflectionTask
 {
@@ -8,7 +10,7 @@ namespace CPro_1.ReflectionTask
         public static object SetPropValueTransport<T>(string[] valueProperties)
         {
             object? obj = Activator.CreateInstance<T>();
-            return SetPropValueTransport(obj, valueProperties, typeof(T));
+            return SetPropValueTransport(obj, valueProperties, typeof(T), false);
         }
 
         public static object SetPropValueTransport(Type typeTransport)
@@ -27,10 +29,31 @@ namespace CPro_1.ReflectionTask
                 i++;
             }
 
-            return SetPropValueTransport(obj, valueProperties, typeTransport);
+            return SetPropValueTransport(obj, valueProperties, typeTransport, false);
         }
 
-        private static object SetPropValueTransport(object obj, string[] valueProperties, Type typeObject)
+        public static object SetPropValueTransportWithAttribute(Type typeTransport)
+        {
+            object? obj = Activator.CreateInstance(typeTransport);
+            var properties = typeTransport.GetProperties();
+
+            string[] valueProperties = new string[properties.Length];
+
+            int i = 0;
+            foreach (var property in properties)
+            {
+                if (Attribute.IsDefined(property, typeof(SetValueAttribute)))
+                {
+                    Console.Write("Ebtered property {0}: ", property.Name);
+                    valueProperties[i] = Console.ReadLine();
+                    i++;
+                } 
+            }
+
+            return SetPropValueTransport(obj, valueProperties, typeTransport, true);
+        }
+
+        private static object SetPropValueTransport(object obj, string[] valueProperties, Type typeObject, bool checkAttribute)
         {           
 
             if(obj== null )
@@ -39,11 +62,13 @@ namespace CPro_1.ReflectionTask
             }
 
             var properties = typeObject.GetProperties();
-
-
+            
             int i = 0;
             foreach (var property in properties)
             {
+                if (!Attribute.IsDefined(property, typeof(SetValueAttribute)) && checkAttribute == true)
+                    continue;
+
                 var propType = property.PropertyType;
 
                 if (propType.IsClass && !propType.IsPrimitive && propType != typeof(string))
@@ -68,12 +93,12 @@ namespace CPro_1.ReflectionTask
 
                         if (propType.Name == "BaseEngine")
                         {
-                            var testLegacy = (TypeEngineEnum)Enum.Parse(typeof(TypeEngineEnum), valueProperties[i]);                            
+                            var testLegacy = (TypeEngineEnum)Enum.Parse(typeof(TypeEngineEnum), valueProperties[i].ToUpper());                            
                             nestedPropertyInfo.SetValue(propertyValue, testLegacy);
                         } 
                         else if(propType.Name == "DoorPosition")
                         {
-                            var testLegacy = (OpenCloseEnum)Enum.Parse(typeof(OpenCloseEnum), valueProperties[i]);
+                            var testLegacy = (OpenCloseEnum)Enum.Parse(typeof(OpenCloseEnum), WorkWithString.RegistersFirstUpString(valueProperties[i]));
                             nestedPropertyInfo.SetValue(propertyValue, testLegacy);
                         }
                         else if (propType.Name == "MoveTransport")

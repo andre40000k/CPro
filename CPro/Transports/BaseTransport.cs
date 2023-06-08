@@ -4,6 +4,7 @@ using CPro_1.Transports.Door;
 using CPro_1.Transports.TypeEngine;
 using CPro_1.Transports.Movement;
 using CPro_1.Enums;
+using CPro_1.CustomAttribute;
 
 namespace CPro_1.Transports
 {
@@ -24,14 +25,18 @@ namespace CPro_1.Transports
             MoveTransport = new MoveTransport(moves);
         }
 
+        [Display]
+        [SetValue]
         public string? NameOfTransport { get => nameOfTransport; set { nameOfTransport = value; } }
+        [SetValue]
         public double Speed { get { return speed; } set { speed = value; } }
-
+        [Display]
+        [SetValue]
         public BaseEngine BaseEngine { get; set; }
-
+        [SetValue]
         public DoorPosition DoorPosition { get; set; }
-
-        public MoveTransport MoveTransport { get; set; }
+        [Display]
+        public MoveTransport MoveTransport { get; set; } = new MoveTransport();
 
         Random random = new Random();
 
